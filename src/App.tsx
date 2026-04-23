@@ -262,11 +262,10 @@ function App() {
         {page === "home" && (
           <>
             <Hero reveal={reveal} />
-            <IndustriesSection reveal={reveal} />
             <ProjectsSection reveal={reveal} />
+            <PartnersSection reveal={reveal} compact />
             <VacanciesSection reveal={reveal} />
             <ContactsSection reveal={reveal} />
-            <PartnersSection reveal={reveal} compact />
           </>
         )}
         {page === "solutions" && (
