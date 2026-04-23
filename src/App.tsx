@@ -17,16 +17,22 @@ type Partner = {
 };
 
 const nav = [
-  ["/", "О нас"],
-  ["/#projects", "Проекты"],
-  ["/solutions", "Решения"],
-  ["/technologies", "Технологии"],
-  ["/#partners", "Партнеры"],
-  ["/#vacancies", "Вакансии"],
-  ["/#contacts", "Контакты"],
+  ["#top", "О нас"],
+  ["#projects", "Проекты"],
+  ["#/solutions", "Решения"],
+  ["#/technologies", "Технологии"],
+  ["#partners", "Партнеры"],
+  ["#vacancies", "Вакансии"],
+  ["#contacts", "Контакты"],
 ];
 
 const favicon = (domain: string) => `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+
+const getPageFromLocation = () => {
+  if (window.location.hash === "#/solutions" || window.location.pathname === "/solutions") return "solutions";
+  if (window.location.hash === "#/technologies" || window.location.pathname === "/technologies") return "technologies";
+  return "home";
+};
 
 const industries = [
   ["01", "Медицина", "Видеоаналитика для контроля состояния пациентов, оборудования и выполнения протоколов ухода."],
@@ -118,56 +124,55 @@ const partnerGroups: Array<{ id: string; title: string; featured?: boolean; wide
     id: "01",
     title: "Медицина и наука",
     featured: true,
+    wide: true,
     partners: [
-      { name: "Онкоцентр Герцена", href: "https://mnioi.nmicr.ru/", logo: "/assets/Герцена_лого.jpg", className: "wide-logo" },
-      { name: "Бакулевка", href: "https://bakulev.ru/", logo: "/assets/Бакулевка_лого.png", className: "wide-logo" },
+      { name: "Онкоцентр Герцена", href: "https://mnioi.nmicr.ru/", logo: "/assets/herzen-logo.jpg", className: "wide-logo" },
+      { name: "ФНКЦ ФМБА России", href: "https://fnkc.ru/", logo: favicon("fnkc.ru") },
+      { name: "МРНЦ им. А. Ф. Цыба", href: "https://new.nmicr.ru/mrrc/", logo: favicon("new.nmicr.ru") },
+      { name: "РМАНПО", href: "https://rmanpo.ru/", logo: "/assets/rmanpo-logo.png", className: "wide-logo" },
+      { name: "НЦ ССХ им. Бакулева А. Н. РАМН", href: "https://bakulev.ru/", logo: "/assets/bakulevka-logo.png", className: "wide-logo" },
       { name: "ВРОНЦ", href: "https://ronc.ru/", logo: favicon("ronc.ru") },
       { name: "Курчатовский институт", href: "https://www.nrcki.ru/", logo: favicon("nrcki.ru") },
-      { name: "Институт МЯТ ФМБА", href: "https://fmbaros.ru/", logo: "/assets/фмба_лого.webp", className: "wide-logo" },
-      { name: "ФМБА", href: "https://fmbaros.ru/", logo: "/assets/фмба_лого.webp", className: "wide-logo" },
-      { name: "МГУ", href: "https://www.msu.ru/", logo: "/assets/МГУ_лого.jpg", className: "tall-logo" },
-      { name: "МИФИ", href: "https://mephi.ru/", logo: "/assets/МИФИ_лого.jpg", className: "tall-logo" },
+      { name: "Институт МЯТ ФМБА", href: "https://fmbaros.ru/", logo: "/assets/fmba-logo.webp", className: "wide-logo" },
+      { name: "ФМБА", href: "https://fmbaros.ru/", logo: "/assets/fmba-logo.webp", className: "wide-logo" },
+      { name: "МГУ", href: "https://www.msu.ru/", logo: "/assets/msu-logo.jpg", className: "tall-logo" },
+      { name: "МИФИ", href: "https://mephi.ru/", logo: "/assets/mephi-logo.jpg", className: "tall-logo" },
       { name: "Сколтех", href: "https://www.skoltech.ru/", logo: "/assets/partners/skoltech.png" },
     ],
   },
   {
     id: "02",
     title: "Государственный и промышленный контур",
+    wide: true,
     partners: [
-      { name: "Правительство Москвы", href: "https://www.mos.ru/", logo: "/assets/правительство_москвы_лого.png", className: "wide-logo" },
-      { name: "Минпромторг", href: "https://minpromtorg.gov.ru/", logo: "/assets/минпромторг_лого.png", className: "wide-logo" },
+      { name: "Правительство Москвы", href: "https://www.mos.ru/", logo: "/assets/moscow-government-logo.png", className: "wide-logo" },
+      { name: "Минпромторг", href: "https://minpromtorg.gov.ru/", logo: "/assets/minpromtorg-logo.png", className: "wide-logo" },
       { name: "Ростех", href: "https://rostec.ru/", logo: "/assets/partners/rostec.svg", className: "tall-logo" },
-      { name: "Росатом", href: "https://www.rosatom.ru/", logo: "/assets/росатом_лого.webp", className: "wide-logo" },
+      { name: "Росатом", href: "https://www.rosatom.ru/", logo: "/assets/rosatom-logo.webp", className: "wide-logo" },
       { name: "Атомстройэкспорт", href: "https://ase-ec.ru/", logo: "/assets/partners/atomstroiexport.svg" },
-      { name: "Титан", href: "https://titan-group.ru/", logo: "/assets/Титан_лого.png", className: "wide-logo" },
+      { name: "Титан", href: "https://titan-group.ru/", logo: "/assets/titan-logo.png", className: "wide-logo" },
       { name: "РАД", href: "https://www.gp-rad.ru/", logo: favicon("gp-rad.ru") },
       { name: "Пионер", href: "https://pioneer.ru/", logo: favicon("pioneer.ru") },
       { name: "Мосинжпроект", href: "https://mosinzhproekt.ru/", logo: favicon("mosinzhproekt.ru") },
-      { name: "Гипроздрав", href: "https://giprozdraw.ru/", logo: "/assets/гипроздрав_лого.jpg", className: "wide-logo" },
+      { name: "Гипроздрав", href: "https://giprozdraw.ru/", logo: "/assets/giprozdraw-logo.jpg", className: "wide-logo" },
       { name: "Hutton Development", href: "https://hutton.ru/", logo: favicon("hutton.ru") },
-      { name: "Инфратех Концессии", href: "https://concessii.ru/", logo: "/assets/инфратех_лого.webp", className: "wide-logo" },
+      { name: "Инфратех Концессии", href: "https://concessii.ru/", logo: "/assets/infratech-logo.webp", className: "wide-logo" },
     ],
   },
   {
     id: "03",
-    title: "Технологии и инфраструктура",
+    title: "Технологии, приборостроение и инфраструктура",
+    wide: true,
     partners: [
       { name: "Р-Фарм", href: "https://r-pharm.com/", logo: "/assets/partners/r-pharm.jpg", className: "tall-logo" },
       { name: "Фармстандарт", href: "https://pharmstd.com/", logo: "/assets/partners/pharmstandard.svg" },
-      { name: "RUVDS.com", href: "https://ruvds.com/", logo: "/assets/ruvds_лого.jpg", className: "wide-logo" },
-    ],
-  },
-  {
-    id: "04",
-    title: "Производители и приборостроение",
-    wide: true,
-    partners: [
+      { name: "RUVDS.com", href: "https://ruvds.com/", logo: "/assets/ruvds-logo.jpg", className: "wide-logo" },
       { name: "Polimaster", href: "https://polimaster.com/", logo: favicon("polimaster.com") },
       { name: "ЭкоСфера", href: "https://ekosf.ru/", logo: favicon("ekosf.ru") },
       { name: "Экотест", href: "https://ecotest.ua/", logo: favicon("ecotest.ua") },
       { name: "ПТФМ", href: "https://www.ptfm.ru/", logo: favicon("ptfm.ru") },
       { name: "НПП «Гамма»", href: "https://khv.nppgamma.ru/", logo: favicon("nppgamma.ru") },
-      { name: "Атомтех", href: "http://www.atomtex.com/", logo: "/assets/атомтех_лого.avif", className: "wide-logo" },
+      { name: "Атомтех", href: "http://www.atomtex.com/", logo: "/assets/atomtex-logo.avif", className: "wide-logo" },
       { name: "Позитрон", href: "https://npk-positron.ru/", logo: favicon("npk-positron.ru") },
       { name: "IBA Dosimetry", href: "https://www.iba-dosimetry.com/", logo: favicon("iba-dosimetry.com") },
       { name: "Gammex", href: "https://www.sunnuclear.com/diagnostic-imaging-qa-solutions", logo: favicon("sunnuclear.com") },
@@ -208,7 +213,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [compact, setCompact] = useState(false);
   const [activeTech, setActiveTech] = useState("vision");
-  const [path, setPath] = useState(() => window.location.pathname);
+  const [page, setPage] = useState(getPageFromLocation);
   const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -219,9 +224,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const onPopState = () => setPath(window.location.pathname);
-    window.addEventListener("popstate", onPopState);
-    return () => window.removeEventListener("popstate", onPopState);
+    const onRouteChange = () => setPage(getPageFromLocation());
+    window.addEventListener("hashchange", onRouteChange);
+    window.addEventListener("popstate", onRouteChange);
+    return () => {
+      window.removeEventListener("hashchange", onRouteChange);
+      window.removeEventListener("popstate", onRouteChange);
+    };
   }, []);
 
   useEffect(() => {
@@ -238,19 +247,27 @@ function App() {
     transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
   };
 
-  const page = path === "/solutions" ? "solutions" : path === "/technologies" ? "technologies" : "home";
-
   const navigate = (href: string) => {
-    const [nextPath, hash] = href.split("#");
-    const targetPath = nextPath || "/";
-    window.history.pushState({}, "", href);
-    setPath(targetPath);
     setMenuOpen(false);
+    if (window.location.pathname === "/solutions" || window.location.pathname === "/technologies") {
+      window.history.replaceState({}, "", "/");
+    }
+
+    if (href.startsWith("#/")) {
+      window.location.hash = href;
+      setPage(href === "#/solutions" ? "solutions" : "technologies");
+      window.setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 0);
+      return;
+    }
+
+    setPage("home");
+    window.location.hash = href;
     window.setTimeout(() => {
-      if (hash) {
-        document.getElementById(hash)?.scrollIntoView({ behavior: "smooth" });
-      } else {
+      const target = href.slice(1) || "top";
+      if (target === "top") {
         window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        document.getElementById(target)?.scrollIntoView({ behavior: "smooth" });
       }
     }, 0);
   };
@@ -306,8 +323,8 @@ function Header({
   return (
     <header className={`site-header ${compact ? "is-compact" : ""}`}>
       <div className="container header-inner">
-        <a className="brand" href="/" aria-label="Техноцентр" onClick={(event) => { event.preventDefault(); navigate("/"); }}>
-          <img src="/assets/Техноцентр_лого.png" alt="ООО «Техноцентр»" />
+        <a className="brand" href="#top" aria-label="Техноцентр" onClick={(event) => { event.preventDefault(); navigate("#top"); }}>
+          <img src="/assets/technocenter-logo.png" alt="ООО «Техноцентр»" />
         </a>
         <button
           className="menu-toggle"
@@ -356,12 +373,15 @@ function Hero({ reveal }: { reveal: any }) {
           <p className="hero-lead">Разрабатываем передовые решения для промышленных предприятий и государственных структур.</p>
         </motion.div>
         <motion.article className="hero-panel" {...reveal} transition={{ duration: 0.65, delay: 0.12 }}>
-          <p>Мы ориентируемся на нужды промышленных предприятий и государственных структур.</p>
           <p>
-            Наша инновационная система видеоаналитики, основанная на использовании камер с искусственным интеллектом,
-            обеспечивает непрерывный мониторинг окружающей среды. Она поставляет актуальные данные в режиме реального
-            времени, что способствует существенному повышению уровня безопасности, оптимизации производственных
-            процессов и принятию обоснованных управленческих решений в разнообразных отраслях.
+            Наша компания специализируется на разработке инновационных решений в области обработки данных. Мы занимаемся
+            проектированием, разработкой и внедрением масштабных учетно-аналитических интеграционных систем. Наши решения
+            находятся на стыке инновационных ИТ технологий, бизнес-моделей, стратегии и развития управления городским
+            хозяйством.
+          </p>
+          <p>
+            Накопленный опыт реализован в новом продукте - LOW CODE платформе управления данными и бизнес-процессами,
+            которая позволяет решать задачи автоматизации без привлечения профессиональных разработчиков.
           </p>
         </motion.article>
       </div>
@@ -406,7 +426,7 @@ function ProjectsSection({ reveal }: { reveal: any }) {
       <div className="container projects-grid">
         <motion.div {...reveal}>
           <p className="eyebrow">Реализованный опыт</p>
-          <h2>Нашей компанией при поддержке бизнес-партнеров были успешно реализованы проекты в промышленности, медицине, строительстве, инфраструктурном контроле и других отраслях.</h2>
+          <h2>Совместно с бизнес-партнерами нашей компанией были успешно реализованы проекты в промышленности, медицине, строительстве, инфраструктурном контроле и других отраслях.</h2>
         </motion.div>
         <motion.div className="photo-slot large-slot" {...reveal}>
           <div>
