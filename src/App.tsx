@@ -18,8 +18,12 @@ type Partner = {
 
 const nav = [
   ["/", "О нас"],
+  ["/#projects", "Проекты"],
   ["/solutions", "Решения"],
   ["/technologies", "Технологии"],
+  ["/partners", "Партнеры"],
+  ["/#vacancies", "Вакансии"],
+  ["/#contacts", "Контакты"],
 ];
 
 const favicon = (domain: string) => `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
