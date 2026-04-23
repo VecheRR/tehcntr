@@ -21,7 +21,7 @@ const nav = [
   ["/#projects", "Проекты"],
   ["/solutions", "Решения"],
   ["/technologies", "Технологии"],
-  ["/partners", "Партнеры"],
+  ["/#partners", "Партнеры"],
   ["/#vacancies", "Вакансии"],
   ["/#contacts", "Контакты"],
 ];
@@ -238,7 +238,7 @@ function App() {
     transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
   };
 
-  const page = path === "/partners" ? "partners" : path === "/solutions" ? "solutions" : path === "/technologies" ? "technologies" : "home";
+  const page = path === "/solutions" ? "solutions" : path === "/technologies" ? "technologies" : "home";
 
   const navigate = (href: string) => {
     const [nextPath, hash] = href.split("#");
@@ -267,12 +267,6 @@ function App() {
             <VacanciesSection reveal={reveal} />
             <ContactsSection reveal={reveal} />
             <PartnersSection reveal={reveal} compact />
-          </>
-        )}
-        {page === "partners" && (
-          <>
-            <PageHero eyebrow="Экосистема внедрения" title="Наши партнеры" text="Партнерская сеть медицинских центров, научных организаций, государственных структур, производителей оборудования и инфраструктурных компаний." />
-            <PartnersSection reveal={reveal} />
           </>
         )}
         {page === "solutions" && (
