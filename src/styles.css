@@ -358,6 +358,34 @@ main {
   padding: 104px 0;
 }
 
+.page-hero {
+  padding: 130px 0 74px;
+  background:
+    linear-gradient(90deg, rgba(72, 167, 112, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(72, 167, 112, 0.06) 1px, transparent 1px),
+    var(--white);
+  background-size: 56px 56px;
+}
+
+.page-hero-inner {
+  max-width: 880px;
+}
+
+.page-hero h1 {
+  margin: 0;
+  color: var(--gray-900);
+  font-size: clamp(44px, 6vw, 76px);
+  line-height: 1.02;
+}
+
+.page-hero p:not(.eyebrow) {
+  max-width: 760px;
+  margin: 26px 0 0;
+  color: var(--gray-500);
+  font-size: 23px;
+  line-height: 1.65;
+}
+
 .section-heading {
   max-width: 780px;
   margin-bottom: 54px;
@@ -569,10 +597,23 @@ h4 {
 .partner-logo img {
   display: block;
   max-width: 86%;
-  max-height: 62px;
+  max-height: 54px;
   width: auto;
   height: auto;
   object-fit: contain;
+}
+
+.partner-logo.has-caption {
+  gap: 10px;
+  min-height: 126px;
+}
+
+.partner-logo.has-caption span {
+  display: block;
+  color: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.18;
 }
 
 .partner-logo.tall-logo img {
@@ -597,7 +638,12 @@ h4 {
 }
 
 .partner-group.featured .image-logo {
+  color: var(--gray-900);
   background: var(--white);
+}
+
+.partner-group.featured .image-logo span {
+  color: var(--gray-900);
 }
 
 .photo-slot {
@@ -635,6 +681,71 @@ h4 {
 
 .large-slot {
   min-height: 380px;
+}
+
+.vacancies {
+  background:
+    linear-gradient(rgba(72, 167, 112, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(72, 167, 112, 0.07) 1px, transparent 1px),
+    var(--white);
+  background-size: 52px 52px;
+}
+
+.vacancies .section-heading .eyebrow {
+  color: var(--green-dark);
+}
+
+.vacancies .section-heading h2 {
+  color: var(--gray-900);
+}
+
+.vacancy-frame {
+  position: relative;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.vacancy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.vacancy-card {
+  min-width: 0;
+  padding: 0 0 4px;
+}
+
+.vacancy-card img {
+  width: 100%;
+  aspect-ratio: 1.2 / 1;
+  object-fit: cover;
+}
+
+.vacancy-card h3 {
+  margin: 30px 0 14px;
+  color: var(--gray-900);
+  font-size: clamp(24px, 2vw, 32px);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.vacancy-card p {
+  margin: 0 0 24px;
+  color: var(--gray-500);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.vacancy-card a {
+  color: var(--green-dark);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.vacancy-arrow {
+  display: none;
 }
 
 .solutions {
